@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GetAge"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+        <View
+            android:id="@+id/dot1"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/black"
+            />
+
+        <View
+            android:id="@+id/dot2"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/black"
+            android:layout_marginLeft="8dp"
+            />
+
+        <View
+            android:id="@+id/dot3"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/black"
+            android:layout_marginLeft="8dp"
+            />
+        <View
+            android:id="@+id/dot4"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/black"
+            android:layout_marginLeft="8dp"
+            />
+        <View
+            android:id="@+id/dot5"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/grey"
+            android:layout_marginLeft="8dp"
+            />
+        <View
+            android:id="@+id/dot6"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/grey"
+            android:layout_marginLeft="8dp"
+            />
+        <View
+            android:id="@+id/dot7"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/grey"
+            android:layout_marginLeft="8dp"
+            />
+        <View
+            android:id="@+id/dot8"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/grey"
+            android:layout_marginLeft="8dp"
+            />
+        <View
+            android:id="@+id/dot9"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/grey"
+            android:layout_marginLeft="8dp"
+            />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:text="What's your age?"
+        android:textStyle="bold"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/welcome"
+        android:layout_marginTop="20dp"
+        android:text="Your age determines how much you should consume. (Select your age in years)"
+        android:textColor="@color/darkgrey"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:id="@+id/arrow_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/description"
+        android:layout_centerVertical="true"
+        android:src="@drawable/left_arrow"
+        android:layout_marginTop="210dp" />
+
+    <NumberPicker
+        android:id="@+id/age_picker"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_below="@id/description"
+        android:layout_toEndOf="@id/arrow_left"
+        android:layout_toStartOf="@id/arrow_right"
+        android:layout_centerInParent="true"
+        android:descendantFocusability="blocksDescendants"
+        android:layout_marginTop="30dp"
+        android:textSize="35dp"
+        android:background="@android:color/transparent"
+        android:layout_marginBottom="16dp"/>
+
+
+
+    <ImageView
+        android:id="@+id/arrow_right"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/description"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="210dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/right_arrow"/>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/grey"
+        android:layout_marginTop="8dp"
+        android:layout_above="@id/next" />
+    <!--BUTTONS-->
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentBottom="true"
+        android:text="BACK"
+        android:textColor="@color/black"
+        android:background="@android:color/transparent"
+        android:textSize="15dp"
+        android:textStyle="bold"/>
+    <Button
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:text="NEXT"
+        android:textColor="@color/black"
+        android:background="@android:color/transparent"
+        android:textSize="15dp"
+        android:textStyle="bold"/>
+
+</RelativeLayout>

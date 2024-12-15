@@ -1,0 +1,5 @@
+<!-- res/drawable/feedback_selector.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/yellow" android:state_selected="true" />
+    <item android:drawable="@color/darkgrey" /> <!-- Default background color -->
+</selector>

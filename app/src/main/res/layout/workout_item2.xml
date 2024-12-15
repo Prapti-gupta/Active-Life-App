@@ -1,0 +1,46 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:padding="10dp">
+
+<!-- Image section with overlay -->
+<ImageButton
+    android:id="@+id/workout_image"
+    android:layout_width="match_parent"
+    android:layout_height="190dp"
+    android:background="@drawable/exercise_rounded_border"
+    android:clipToOutline="true"
+    android:layout_marginTop="5dp"
+    android:scaleType="centerCrop" />
+
+    <View
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:background="@drawable/gradient_horizontal_overlay"
+        android:layout_alignBottom="@+id/workout_image" />
+
+<!-- Title and Time within overlay -->
+<TextView
+    android:id="@+id/workout_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textColor="@color/white"
+    android:textSize="22sp"
+    android:layout_marginTop="60dp"
+    android:layout_marginStart="30dp"
+    android:layout_alignTop="@+id/overlay" />
+
+<TextView
+    android:id="@+id/workout_time"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/white"
+    android:textSize="15sp"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="30dp"
+    android:layout_below="@id/workout_name" />
+</RelativeLayout>
+

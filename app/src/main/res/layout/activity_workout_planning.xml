@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WorkoutPlanning">
+
+    <TextView
+        android:id="@+id/head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:textSize="35sp"
+        android:text="Workout" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/head"
+        android:layout_above="@id/bottomNavigation"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/workout_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:scrollbars="vertical" />
+
+            <TextView
+                android:id="@+id/picks_for_you"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Picks for you"
+                android:paddingLeft="8dp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/workout_recycler_view3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:scrollbars="vertical"
+                android:minHeight="200dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/workout_recycler_view2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+            android:scrollbars="vertical" />
+
+            <TextView
+                android:id="@+id/for_beginners"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="For beginners"
+                android:paddingLeft="8dp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/image_button1"
+                    android:layout_width="120dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop"
+                    android:layout_marginEnd="15dp"
+                    android:padding="10dp"
+                    android:background="@drawable/border_edit_text_blue"
+                    android:src="@drawable/beginner_pushup" />
+
+                <ImageButton
+                    android:id="@+id/image_button2"
+                    android:layout_width="120dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_edit_text_blue"
+                    android:backgroundTint="@color/dress"
+                    android:padding="10dp"
+                    android:src="@drawable/core_workout"
+                    android:scaleType="centerCrop" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/fast_workout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fast workout"
+                android:paddingLeft="8dp"
+                android:textStyle="bold"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/workout_recycler_view4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:scrollbars="vertical"
+                android:minHeight="200dp" />
+
+            <TextView
+                android:id="@+id/body_focus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Body focus"
+                android:paddingLeft="8dp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/body1"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop"
+                    android:layout_marginEnd="10dp"
+                    android:padding="10dp"
+                    android:background="@drawable/border_edit_text_blue"
+                    android:src="@drawable/body_focus1" />
+
+                <ImageButton
+                    android:id="@+id/body2"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_edit_text_blue"
+                    android:padding="10dp"
+                    android:backgroundTint="@color/dress"
+                    android:src="@drawable/body_focus2"
+                    android:scaleType="centerCrop" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/body3"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_edit_text_blue"
+                    android:backgroundTint="@color/dress"
+                    android:layout_marginEnd="10dp"
+                    android:padding="10dp"
+                    android:src="@drawable/body_focus3"
+                    android:scaleType="centerCrop" />
+
+                <ImageButton
+                    android:id="@+id/body4"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:background="@drawable/border_edit_text_blue"
+                    android:backgroundTint="@color/dress"
+                    android:src="@drawable/body_focus4"
+                    android:scaleType="centerCrop" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white">
+
+        <!-- Home Button -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingTop="15dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/homeButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/grey_home"
+                android:background="@android:color/transparent"
+                android:contentDescription="Home" />
+
+            <TextView
+                android:id="@+id/homeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textColor="@color/darkgrey"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Meal Planning Button -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingTop="15dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/mealButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/grey_meal"
+                android:contentDescription="Meal Planning" />
+
+            <TextView
+                android:id="@+id/mealText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Meals"
+                android:textColor="@color/darkgrey"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Workout Button -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingTop="15dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/workoutButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/blue_workout"
+                android:contentDescription="Workout" />
+
+            <TextView
+                android:id="@+id/workoutText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Workout"
+                android:textStyle="bold"
+                android:textColor="@color/dress"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Profile Button -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingTop="15dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/profileButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/grey_profile"
+                android:contentDescription="Profile" />
+
+            <TextView
+                android:id="@+id/profileText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:textColor="@color/darkgrey"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Left-side overlay color with gradient and rounded corners -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="20dp" />
+            <gradient
+                android:startColor="#E2000000"
+                android:endColor="@android:color/transparent"
+            android:angle="0" />
+        </shape>
+    </item>
+
+    <!-- Rounded corners for the entire image -->
+    <item>
+        <shape android:shape="rectangle">
+            <!-- Rounded corners applied to the background -->
+            <corners android:radius="20dp" />
+            <!-- Transparent background to preserve image visibility -->
+            <solid android:color="@android:color/transparent" />
+        </shape>
+    </item>
+
+</layer-list>

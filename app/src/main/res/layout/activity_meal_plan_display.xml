@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MealPlanDisplay">
+
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/back"
+        android:contentDescription="Back"
+        android:padding="8dp"
+        android:layout_gravity="start" />
+
+    <!-- Meal Plan Name -->
+    <TextView
+        android:id="@+id/mealPlanName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Meal Plan Name"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:paddingBottom="8dp" />
+
+    <!-- Meal Plan Description -->
+    <TextView
+        android:id="@+id/mealPlanDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description of the meal plan goes here."
+        android:textSize="16sp"
+        android:layout_gravity="center"
+        android:paddingBottom="16dp" />
+
+    <!-- Breakfast Card View -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardBreakfast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="5dp"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textBreakfast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Breakfast"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/descriptionBreakfast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Details about breakfast options go here." />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Lunch Card View -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardLunch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textLunch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lunch"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/descriptionLunch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Details about lunch options go here." />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Snacks Card View -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardSnacks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textSnacks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Snacks"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/descriptionSnacks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Details about snacks options go here." />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Dinner Card View -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardDinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textDinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dinner"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/descriptionDinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Details about dinner options go here." />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

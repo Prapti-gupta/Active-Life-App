@@ -1,0 +1,121 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp">
+
+    <!-- Exercise Name at the top -->
+    <TextView
+        android:id="@+id/text_view_exercise_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="16dp" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/text_view_exercise_name"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/exercises"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <!-- FrameLayout to Center VideoView -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="16dp">
+
+                <VideoView
+                    android:id="@+id/video_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center" />
+
+            </FrameLayout>
+
+            <!-- Instructions below VideoView -->
+            <TextView
+                android:id="@+id/instructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INSTRUCTIONS"
+                android:layout_marginTop="15dp"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/dress" />
+
+            <TextView
+                android:id="@+id/text_view_instructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Focus Areas (Body Parts) below Instructions -->
+            <TextView
+                android:id="@+id/bodyparts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FOCUS AREA"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/dress"
+                android:layout_marginTop="15dp" />
+
+            <TextView
+                android:id="@+id/text_view_body_parts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Breathing Tips below Focus Areas -->
+            <TextView
+                android:id="@+id/breathing_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BREATHING TIPS"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/dress"
+                android:layout_marginTop="15dp" />
+
+            <TextView
+                android:id="@+id/text_view_breathing_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Common Mistakes below Breathing Tips -->
+            <TextView
+                android:id="@+id/common_mistakes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="COMMON MISTAKES"
+                android:textStyle="bold"
+                android:textColor="@color/dress"
+                android:textSize="22sp"
+                android:layout_marginTop="15dp" />
+
+            <TextView
+                android:id="@+id/text_view_common_mistakes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

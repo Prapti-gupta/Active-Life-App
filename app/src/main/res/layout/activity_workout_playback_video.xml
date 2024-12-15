@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- VideoView at the top -->
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <!-- TextView for "READY TO GO!" -->
+    <TextView
+        android:id="@+id/readyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/videoView"
+        android:layout_centerHorizontal="true"
+        android:text="READY TO GO!"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/dress"
+        android:layout_marginTop="25dp" />
+
+    <!-- TextView to display the specific exercise name -->
+    <TextView
+        android:id="@+id/exerciseNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/readyTextView"
+        android:layout_centerHorizontal="true"
+        android:text="Exercise Name"
+        android:textSize="25sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="25dp" />
+
+    <!-- Timer TextView -->
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/exerciseNameTextView"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:textSize="48sp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Circular Timer View -->
+    <com.example.activelife.CircularTimerView
+        android:id="@+id/circularTimerView"
+        android:layout_width="140dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/exerciseNameTextView"
+        android:layout_centerInParent="true" />
+
+    <!-- Overlay View for break time -->
+    <View
+        android:id="@+id/breakOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dress"
+        android:visibility="gone" /> <!-- Initially hidden -->
+
+    <!-- Break Time TextView -->
+    <TextView
+        android:id="@+id/breakTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/breakTime"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <!-- Break Label TextView -->
+    <TextView
+        android:id="@+id/breakTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BREAK TIME"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
+
+    <!-- Include for quit overlay -->
+    <include
+        android:id="@+id/quit_overlay"
+        layout="@layout/fullscreen_dialog"
+        android:visibility="gone" />
+
+    <!-- Skip Button -->
+    <Button
+        android:id="@+id/skip_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Skip"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentBottom="true"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/dress"
+        android:layout_marginBottom="35dp" />
+
+</RelativeLayout>

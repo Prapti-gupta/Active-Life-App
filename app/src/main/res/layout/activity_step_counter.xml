@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <!-- Step Counter Circular Progress -->
+    <TextView
+        android:id="@+id/step_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STEP COUNTER"
+        android:textSize="36sp"
+        android:textColor="@android:color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:id="@+id/target"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Step Goal: 5000"
+        android:textSize="22sp"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        android:layout_below="@id/step_counter"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/green_border_frame"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:id="@+id/changeTargetText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Step Target"
+        android:textColor="@color/dress"
+        android:textStyle="italic"
+        android:textSize="16sp"
+        android:layout_below="@id/target"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:onClick="openChangeStepTarget" />
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="250dp"
+        android:layout_height="257dp"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/circular"
+        android:padding="10dp"
+        android:progressDrawable="@drawable/custom_progress"
+        android:layout_below="@id/target"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/walking"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="260dp"/>
+
+
+    <!-- Stop Button -->
+    <Button
+        android:id="@+id/pausebt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STOP"
+        android:backgroundTint="#FF474C"
+        android:textColor="@android:color/black"
+        android:onClick="onPauseClicker"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/progressbar"
+        android:layout_marginTop="10dp"/>
+
+    <!-- Stats Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/pausebt"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="@drawable/grey_border_frame"
+            android:padding="8dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/stepcount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 0"
+                android:textSize="18sp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Steps"
+                android:textSize="14sp"
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:padding="5dp"
+                android:src="@drawable/footsteps"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="8dp"
+            android:background="@drawable/blue_border_frame"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:id="@+id/distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5.24"
+                android:textSize="18sp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Distance"
+                android:textSize="14sp"
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:padding="5dp"
+                android:src="@drawable/distance"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="8dp"
+            android:background="@drawable/orange_border_frame"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00: 00"
+                android:textSize="18sp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                android:textSize="14sp"
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:padding="5dp"
+                android:src="@drawable/clock"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

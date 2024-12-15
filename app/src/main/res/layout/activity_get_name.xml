@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GetName"
+    android:padding="10dp" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+        <View
+            android:id="@+id/dot1"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/black"
+            />
+
+        <View
+            android:id="@+id/dot2"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/grey"
+            android:layout_marginLeft="8dp"
+            />
+
+        <View
+            android:id="@+id/dot3"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/grey"
+            android:layout_marginLeft="8dp"
+            />
+        <View
+            android:id="@+id/dot4"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/grey"
+            android:layout_marginLeft="8dp"
+            />
+        <View
+            android:id="@+id/dot5"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/grey"
+            android:layout_marginLeft="8dp"
+            />
+        <View
+            android:id="@+id/dot6"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/grey"
+            android:layout_marginLeft="8dp"
+            />
+        <View
+            android:id="@+id/dot7"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/grey"
+            android:layout_marginLeft="8dp"
+            />
+        <View
+            android:id="@+id/dot8"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/grey"
+            android:layout_marginLeft="8dp"
+            />
+        <View
+            android:id="@+id/dot9"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="@color/grey"
+            android:layout_marginLeft="8dp"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:text="Hey there!"
+        android:textStyle="bold"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/welcome"
+        android:layout_marginTop="20dp"
+        android:text="Great choice on starting your health journey! To help us tailor the experience for you, please provide us with a few essential details to get started."
+        android:textColor="@color/darkgrey"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/whatname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/description"
+        android:layout_marginTop="50dp"
+        android:text="What is your name?"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        android:padding="10dp" />
+    <EditText
+        android:id="@+id/name"
+        android:layout_below="@id/whatname"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_edit_text"
+        android:padding="15dp"
+        android:textSize="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center" />
+
+
+
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/grey"
+        android:layout_marginTop="8dp"
+
+        android:layout_above="@id/next" />
+
+    <!--BUTTONS-->
+    <Button
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:text="NEXT"
+        android:textColor="@color/black"
+        android:background="@android:color/transparent"
+        android:textSize="15dp"
+        android:textStyle="bold"/>
+
+</RelativeLayout>

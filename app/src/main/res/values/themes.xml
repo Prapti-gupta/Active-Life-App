@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ActiveLife" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="android:windowBackground">@color/white</item>
+        <item name="colorPrimary">@color/greentick</item>
+       <!-- <item name="android:statusBarColor">@android:color/background_light</item>-->
+        <item name="android:statusBarColor">@color/dress</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowIsTranslucent">true</item> <!--removes default splash screen-->
+
+
+    </style>
+
+    <style name="Theme.ActiveLife" parent="Base.Theme.ActiveLife"/>
+
+</resources>
