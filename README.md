@@ -28,33 +28,6 @@ Maintaining a healthy lifestyle can be challenging without structured guidance a
 - **Programming Languages**: Java, XML
 - **IDE**: Android Studio
 - **Database**: SQLite
-- **Design Tools**: Figma (for wireframes and mockups)
-
-## System Design
-The app follows Object-Oriented Design (OOD) principles, using concepts like:
-
-- **Encapsulation**: Separate objects for each feature (workouts, meal plans, etc.)
-- **Abstraction**: Hiding complex technical details from the user interface.
-- **Inheritance**: Shared features between workout types to minimize redundancy.
-- **Polymorphism**: Flexibility to handle different types of workouts or meal plans under one system.
-
-Data Flow Diagrams (DFDs), Entity-Relationship Diagrams (ERDs), Use Case Diagrams, and Class Diagrams were used to design and organize the app’s architecture.
-
-## Requirements
-### Functional Requirements
-- User Registration & Login
-- Dashboard Display (streaks, step counts, BMI, progress)
-- Workout Library with Instructions
-- Meal Planning Section
-- Progress Tracking (photos, achievements, badges)
-- Interactive Workouts (start, pause, skip, quit)
-
-### Non-Functional Requirements
-- **Usability**: Intuitive and user-friendly interface.
-- **Performance**: Fast loading times and smooth operation.
-- **Scalability**: The app can handle increasing user data.
-- **Security**: User data is encrypted for privacy.
-- **Compatibility**: Works on Android and iOS devices.
 
 ## Installation
 1. Clone the repository:
@@ -63,6 +36,3 @@ Data Flow Diagrams (DFDs), Entity-Relationship Diagrams (ERDs), Use Case Diagram
     ```
 2. Open the project in Android Studio.
 3. Build and run the project on an emulator or physical device.
-
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
