@@ -1,6 +1,7 @@
 package com.example.activelife;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,15 +20,6 @@ public class GetHeight extends AppCompatActivity {
         setTheme(R.style.Base_Theme_ActiveLife);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_height);
-
-        //values from the previous activity
-        String email=getIntent().getStringExtra("email");
-        String password=getIntent().getStringExtra("password");
-        String name = getIntent().getStringExtra("name");
-        String city = getIntent().getStringExtra("city");
-        String gender= getIntent().getStringExtra("gender");
-        String age=getIntent().getStringExtra("age");
-        String activity_level=getIntent().getStringExtra("activity_level");
 
 
         Button next = findViewById(R.id.next);
@@ -54,27 +46,26 @@ public class GetHeight extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(GetHeight.this, GetActive.class);
                 startActivity(i);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                overridePendingTransition(0, 0);
             }
         });
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                SharedPreferences sharedPreferences = getSharedPreferences("ActiveLifeLogin", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("Height",String.valueOf(numberPicker.getValue()));
+                editor.apply();
+
+
                 Intent i = new Intent(GetHeight.this, GetWeight.class);
-
-                // Pass the previous values along with the selected height
-                i.putExtra("email",email);
-                i.putExtra("password",password);
-                i.putExtra("name",name);
-                i.putExtra("city", city);
-                i.putExtra("gender", gender);
-                i.putExtra("age", age);
-                i.putExtra("activity_level", activity_level);
-                i.putExtra("height", String.valueOf(numberPicker.getValue()));
-
                 startActivity(i);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+                //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                overridePendingTransition(0, 0);
             }
         });
     }

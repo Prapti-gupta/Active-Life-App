@@ -1,6 +1,7 @@
 package com.example.activelife;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,12 +38,19 @@ public class GetName extends AppCompatActivity {
                     nameEditText.requestFocus();
                     nameEditText.setError("Enter only Alphabets and Spaces");
                 } else {
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("ActiveLifeLogin", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("Name",Name);
+                    editor.putString("Email_Id",email);
+                    editor.putString("Password",password);
+                    editor.apply();
+
                     Intent i = new Intent(GetName.this, GetLocation.class);
-                    i.putExtra("email", email);
-                    i.putExtra("password",password);
-                    i.putExtra("name", Name);
                     startActivity(i);
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+                    //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    overridePendingTransition(0, 0);
                 }
             }
         });

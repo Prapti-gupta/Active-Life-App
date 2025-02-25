@@ -1,6 +1,7 @@
 package com.example.activelife;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,11 +27,6 @@ public class GetSex extends AppCompatActivity {
         genderButtons[0] = findViewById(R.id.male);
         genderButtons[1] = findViewById(R.id.female);
 
-        // from previous activity
-        String email=getIntent().getStringExtra("email");
-        String password=getIntent().getStringExtra("password");
-        String name = getIntent().getStringExtra("name");
-        String city = getIntent().getStringExtra("city");
 
         for (int i = 0; i < genderButtons.length; i++) {
             final int index = i; // Required for the inner class
@@ -63,11 +59,12 @@ public class GetSex extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(GetSex.this, GetLocation.class);
                 startActivity(i);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                overridePendingTransition(0, 0);
             }
         });
 
-        // Next button functionality
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,15 +75,16 @@ public class GetSex extends AppCompatActivity {
                     // Determine which gender is selected and pass it
                     String gender = isSelected[0] ? "Male" : "Female"; // Assuming the first button is male
 
+                    SharedPreferences sharedPreferences = getSharedPreferences("ActiveLifeLogin", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("Gender",gender);
+                    editor.apply();
+
                     Intent i = new Intent(GetSex.this, GetAge.class);
-                    i.putExtra("email",email);
-                    i.putExtra("password",password);
-                    i.putExtra("name",name);
-                    i.putExtra("city", city);
-                    i.putExtra("gender", gender);
                     startActivity(i);
 
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    overridePendingTransition(0, 0);
                 }
             }
         });

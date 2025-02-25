@@ -1,6 +1,7 @@
 package com.example.activelife;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,14 +20,6 @@ public class GetActive extends AppCompatActivity {
         setTheme(R.style.Base_Theme_ActiveLife);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_active);
-
-        //values from the previous activity
-        String email=getIntent().getStringExtra("email");
-        String password=getIntent().getStringExtra("password");
-        String name = getIntent().getStringExtra("name");
-        String city = getIntent().getStringExtra("city");
-        String gender= getIntent().getStringExtra("gender");
-        String age=getIntent().getStringExtra("age");
 
         activeButtons[0] = findViewById(R.id.little_active);
         activeButtons[1] = findViewById(R.id.moderate_active);
@@ -79,7 +72,8 @@ public class GetActive extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(GetActive.this, GetAge.class);
                 startActivity(i);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                overridePendingTransition(0, 0);
             }
         });
 
@@ -91,16 +85,16 @@ public class GetActive extends AppCompatActivity {
                 if (!isSelected[0] && !isSelected[1] && !isSelected[2]) {
                     Toast.makeText(GetActive.this, "Please select your activity level", Toast.LENGTH_SHORT).show();
                 } else {
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("ActiveLifeLogin", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("Activity_Level",selectedActivityLevel);
+                    editor.apply();
+
                     Intent i = new Intent(GetActive.this, GetHeight.class);
-                    i.putExtra("email",email);
-                    i.putExtra("password",password);
-                    i.putExtra("name",name);
-                    i.putExtra("city", city);
-                    i.putExtra("gender", gender);
-                    i.putExtra("age", age);
-                    i.putExtra("activity_level", selectedActivityLevel);
                     startActivity(i);
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    overridePendingTransition(0, 0);
                 }
             }
         });

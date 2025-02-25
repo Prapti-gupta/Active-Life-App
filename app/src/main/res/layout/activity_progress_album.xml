@@ -12,6 +12,16 @@
     android:background="@color/dress"
     tools:context=".ProgressAlbum">
 
+    <ImageButton
+        android:id="@+id/bb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/white_backarrow"
+        android:contentDescription="Back"
+        android:padding="8dp"
+        android:layout_gravity="start" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,7 +29,6 @@
         android:layout_gravity="center_horizontal"
         android:textSize="24dp"
         android:textStyle="italic"
-        android:layout_marginTop="20dp"
         android:textColor="@color/white"
         android:layout_marginBottom="20dp"/>
     

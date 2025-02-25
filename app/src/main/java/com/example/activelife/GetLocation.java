@@ -1,11 +1,15 @@
 package com.example.activelife;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,9 +27,7 @@ public class GetLocation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_location);
 
-        String email=getIntent().getStringExtra("email");
-        String password=getIntent().getStringExtra("password");
-        String name = getIntent().getStringExtra("name");
+
         // Initialize EditText
         searchCity = findViewById(R.id.search_city);
 
@@ -79,7 +81,8 @@ public class GetLocation extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(GetLocation.this, GetName.class);
                 startActivity(i);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                overridePendingTransition(0, 0);
             }
         });
 
@@ -99,15 +102,22 @@ public class GetLocation extends AppCompatActivity {
                     searchCity.requestFocus();
                     searchCity.setError("Enter only Alphabets and Spaces");
                 } else {
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("ActiveLifeLogin", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("Location",location);
+                    editor.apply();
+
                     Intent i = new Intent(GetLocation.this, GetSex.class);
-                    i.putExtra("email", email);
-                    i.putExtra("password",password);
-                    i.putExtra("name",name);
-                    i.putExtra("city", location);
                     startActivity(i);
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    overridePendingTransition(0, 0);
                 }
             }
         });
     }
+    // Method to filter cities based on search input
+
+
+
 }

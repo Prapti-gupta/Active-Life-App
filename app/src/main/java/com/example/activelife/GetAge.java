@@ -1,6 +1,7 @@
 package com.example.activelife;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,13 +20,6 @@ public class GetAge extends AppCompatActivity {
         setTheme(R.style.Base_Theme_ActiveLife);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_age);
-
-        //values from the previous activity
-        String email=getIntent().getStringExtra("email");
-        String password=getIntent().getStringExtra("password");
-        String name = getIntent().getStringExtra("name");
-        String city = getIntent().getStringExtra("city");
-        String gender= getIntent().getStringExtra("gender");
 
         NumberPicker numberPicker = findViewById(R.id.age_picker);
 
@@ -51,7 +45,8 @@ public class GetAge extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(GetAge.this, GetSex.class);
                 startActivity(i);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+              //  overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                overridePendingTransition(0, 0);
             }
         });
 
@@ -61,15 +56,15 @@ public class GetAge extends AppCompatActivity {
                 // Get the selected age from the NumberPicker
                 String selectedAge = String.valueOf(numberPicker.getValue());
 
+                SharedPreferences sharedPreferences = getSharedPreferences("ActiveLifeLogin", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("Age",selectedAge);
+                editor.apply();
+
                 Intent i = new Intent(GetAge.this, GetActive.class);
-                i.putExtra("email",email);
-                i.putExtra("password",password);
-                i.putExtra("name",name);
-                i.putExtra("city", city);
-                i.putExtra("gender", gender);
-                i.putExtra("age", selectedAge);
                 startActivity(i);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                overridePendingTransition(0, 0);
             }
         });
     }

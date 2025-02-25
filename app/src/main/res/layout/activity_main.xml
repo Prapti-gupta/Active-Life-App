@@ -46,49 +46,11 @@
         android:orientation="vertical"
         android:layout_below="@id/signup"
         android:padding="5dp"
+        android:layout_marginTop="40dp"
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
         android:paddingBottom="5dp">
 
-        <TextView
-            android:id="@+id/nametext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="20dp"
-            android:text="Name"
-            android:layout_below="@id/signup"
-            android:textColor="@android:color/black"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-        <!-- Name -->
-        <LinearLayout
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="5dp"
-            android:layout_below="@id/signup"
-            android:paddingTop="1dp">
-
-            <ImageView
-                android:id="@+id/user"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/user_regular"
-                android:baselineAlignBottom="true"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"/>
-
-            <EditText
-                android:id="@+id/name_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_edit_text"
-                android:hint="Enter your Name"
-                android:padding="10dp"
-                android:layout_marginBottom="16dp" />
-        </LinearLayout>
 
         <TextView
             android:id="@+id/emailtext"
@@ -223,8 +185,8 @@
         android:id="@+id/terms_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/form"
-        android:layout_marginTop="15dp"
+        android:layout_above="@id/signup_button"
+        android:layout_marginBottom="1dp"
         android:layout_marginLeft="10dp" />
 
     <TextView
@@ -236,7 +198,8 @@
         android:layout_marginLeft="8dp"
         android:layout_toRightOf="@id/terms_checkbox"
         android:text="By continuing you accept our Privacy Policy and Terms of Use"
-        android:layout_below="@id/form"/>
+        android:layout_above="@id/signup_button"
+        android:layout_marginBottom="1dp"/>
 
     <!-- Sign Up Button -->
 
@@ -245,9 +208,9 @@
         android:id="@+id/signup_button"
         android:layout_width="390dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/terms"
+        android:layout_above="@id/line"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="14dp"
+        android:layout_marginBottom="25dp"
         android:backgroundTint="@color/dress"
         android:text="Complete Sign Up"
         android:textColor="@android:color/white" />

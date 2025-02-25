@@ -10,6 +10,16 @@
     android:background="@color/white"
     tools:context=".ChangeStepTarget">
 
+    <ImageButton
+        android:id="@+id/bb1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/back"
+        android:contentDescription="Back"
+        android:padding="8dp"
+        android:layout_gravity="start" />
+
 <ImageView
 android:layout_width="200dp"
 android:layout_height="200dp"

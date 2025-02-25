@@ -1,10 +1,13 @@
 package com.example.activelife;
 
 import android.content.ContentUris;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -20,6 +23,16 @@ public class ProgressAlbum extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress_album);
+
+        ImageButton back=(ImageButton) findViewById(R.id.bb);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ProgressAlbum.this, Profile.class);
+                startActivity(i);
+            }
+        });
 
         // Define the projection for the query
         String[] projection = new String[]{

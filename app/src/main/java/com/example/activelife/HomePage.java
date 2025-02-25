@@ -86,7 +86,6 @@ public class HomePage extends AppCompatActivity {
 
                 String name = cursor.getString(cursor.getColumnIndexOrThrow(UserDatabaseHelper.COLUMN_USER_NAME));
                 String genderValue = cursor.getString(cursor.getColumnIndexOrThrow(UserDatabaseHelper.COLUMN_USER_GENDER));
-
                 username.setText(name);
 
                 if ("Female".equalsIgnoreCase(genderValue)) {

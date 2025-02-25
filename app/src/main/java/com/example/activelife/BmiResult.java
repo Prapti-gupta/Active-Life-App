@@ -1,6 +1,7 @@
 package com.example.activelife;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,6 +56,12 @@ public class BmiResult extends AppCompatActivity {
         intbmi=intweight/(intheight*intheight);  //kg/m^2
 
         bmi=Float.toString(intbmi);
+
+
+
+
+
+
 
         if(intbmi<16){
             bmicategory.setText("Severe Thinness");

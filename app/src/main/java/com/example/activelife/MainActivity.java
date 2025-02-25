@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         dbHelper = new UserDatabaseHelper(this);
 
         // Accessing the views
-        EditText nameInput = findViewById(R.id.name_input);
+
         EditText emailInput = findViewById(R.id.email_input);
         EditText passwordInput = findViewById(R.id.password_input);
         EditText confPassInput = findViewById(R.id.confpass_input);
@@ -93,17 +93,13 @@ public class MainActivity extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = nameInput.getText().toString().trim();
                 String email = emailInput.getText().toString().trim();
                 String password = passwordInput.getText().toString().trim();
                 String confirmPassword = confPassInput.getText().toString().trim();
                 CheckBox termsCheckbox = findViewById(R.id.terms_checkbox);
 
                 // Validation logic
-                if (name.isEmpty()) {
-                    nameInput.requestFocus();
-                    nameInput.setError("Enter your name");
-                } else if (email.isEmpty()) {
+               if (email.isEmpty()) {
                     emailInput.requestFocus();
                     emailInput.setError("Enter your email");
                 } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {

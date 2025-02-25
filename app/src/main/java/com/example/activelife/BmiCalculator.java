@@ -1,170 +1,169 @@
 package com.example.activelife;
 
 import android.content.Intent;
-import android.net.Uri;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class BmiCalculator extends AppCompatActivity {
 
-    TextView currentheight,currentage,currentweight;
-    ImageView increamentage,increamentweight,decreamentweight,decreamentage;
-    SeekBar seekbarforheight;
+    TextView currentHeight, currentAge, currentWeight;
+    ImageView incrementAge, incrementWeight, decrementWeight, decrementAge;
+    SeekBar seekBarForHeight;
+    RelativeLayout male, female;
 
-    RelativeLayout male,female;
-
-    int intweight=55;
-    int intage=22;
-    int currentprogress;
-    String intprogress="170";
-    String tyeofuser="0";
-    String weight2="55";
-    String age2="22";
-
+    int intWeight = 55;
+    int intAge = 22;
+    int currentProgress;
+    String intProgress = "170"; // Height
+    String typeOfUser = "0"; // Gender: 0 = Not selected, "Male" or "Female"
+    String weight2 = "55";
+    String age2 = "22";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmi_calculator);
 
-        Button calulateBmi=(Button)findViewById(R.id.calculatebmi);
-        currentage=findViewById(R.id.currentage);
-        currentweight=findViewById(R.id.currentweight);
-        currentheight=findViewById(R.id.currentheight);
-        increamentage=findViewById(R.id.increamentage);
-        decreamentage=findViewById(R.id.decreamentage);
-        increamentweight=findViewById(R.id.increamentweight);
-        decreamentweight=findViewById(R.id.decreamentweight);
-        seekbarforheight=findViewById(R.id.seekbarForHeight);
-        male=findViewById(R.id.male);
-        female=findViewById(R.id.female);
+        // Initialize UI elements
+        Button calculateBmi = findViewById(R.id.calculatebmi);
+        currentAge = findViewById(R.id.currentage);
+        currentWeight = findViewById(R.id.currentweight);
+        currentHeight = findViewById(R.id.currentheight);
+        incrementAge = findViewById(R.id.increamentage);
+        decrementAge = findViewById(R.id.decreamentage);
+        incrementWeight = findViewById(R.id.increamentweight);
+        decrementWeight = findViewById(R.id.decreamentweight);
+        seekBarForHeight = findViewById(R.id.seekbarForHeight);
+        male = findViewById(R.id.male);
+        female = findViewById(R.id.female);
+        ImageButton back = findViewById(R.id.back_button);
 
+        // Back button action
+        back.setOnClickListener(view -> {
+            Intent i = new Intent(BmiCalculator.this, Profile.class);
+            startActivity(i);
+        });
 
-        seekbarforheight.setMax(300);
-        seekbarforheight.setProgress(170);
-        seekbarforheight.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        // Retrieve the user ID from SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("ActiveLifeLogin", MODE_PRIVATE);
+        long userId = sharedPreferences.getLong("userId", -1);
+
+        // Retrieve data from database
+        UserDatabaseHelper dbHelper = new UserDatabaseHelper(this);
+        Cursor cursor = dbHelper.getUserInfo(userId);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            // Extract data from cursor
+            int ageValue = cursor.getInt(cursor.getColumnIndexOrThrow(UserDatabaseHelper.COLUMN_USER_AGE));
+            int heightValue = cursor.getInt(cursor.getColumnIndexOrThrow(UserDatabaseHelper.COLUMN_USER_HEIGHT));
+            int weightValue = cursor.getInt(cursor.getColumnIndexOrThrow(UserDatabaseHelper.COLUMN_USER_CURRENT_WEIGHT));
+            String genderValue = cursor.getString(cursor.getColumnIndexOrThrow(UserDatabaseHelper.COLUMN_USER_GENDER));
+
+            // Set default values from the database
+            intAge = ageValue;
+            intWeight = weightValue;
+            intProgress = String.valueOf(heightValue);
+            typeOfUser = genderValue;
+
+            currentAge.setText(String.valueOf(intAge));
+            currentWeight.setText(String.valueOf(intWeight));
+            currentHeight.setText(intProgress);
+
+            if (typeOfUser.equalsIgnoreCase("Male")) {
+                male.setBackground(ContextCompat.getDrawable(this, R.drawable.blue_border_frame));
+            } else if (typeOfUser.equalsIgnoreCase("Female")) {
+                female.setBackground(ContextCompat.getDrawable(this, R.drawable.pink_border_frame));
+            }
+
+            cursor.close();
+        }
+
+        // SeekBar for height
+        seekBarForHeight.setMax(300);
+        seekBarForHeight.setProgress(Integer.parseInt(intProgress));
+        seekBarForHeight.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                currentprogress=progress;
-                intprogress=String.valueOf(currentprogress);
-                currentheight.setText(intprogress);
-
+                currentProgress = progress;
+                intProgress = String.valueOf(currentProgress);
+                currentHeight.setText(intProgress);
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) {}
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
-
-        increamentage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intage=intage+1;
-                age2=String.valueOf(intage);
-                currentage.setText(age2);
-            }
+        // Increment and decrement buttons for age
+        incrementAge.setOnClickListener(view -> {
+            intAge++;
+            age2 = String.valueOf(intAge);
+            currentAge.setText(age2);
         });
 
-        decreamentage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intage=intage-1;
-                age2=String.valueOf(intage);
-                currentage.setText(age2);
-            }
+        decrementAge.setOnClickListener(view -> {
+            intAge--;
+            age2 = String.valueOf(intAge);
+            currentAge.setText(age2);
         });
 
-
-        increamentweight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intweight=intweight+1;
-                weight2=String.valueOf(intweight);
-                currentweight.setText(weight2);
-            }
+        // Increment and decrement buttons for weight
+        incrementWeight.setOnClickListener(view -> {
+            intWeight++;
+            weight2 = String.valueOf(intWeight);
+            currentWeight.setText(weight2);
         });
 
-        decreamentweight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intweight=intweight-1;
-                weight2=String.valueOf(intweight);
-                currentweight.setText(weight2);
-            }
+        decrementWeight.setOnClickListener(view -> {
+            intWeight--;
+            weight2 = String.valueOf(intWeight);
+            currentWeight.setText(weight2);
         });
 
-        male.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                male.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.blue_border_frame));
-                female.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.border_edit_text));
-                tyeofuser="Male";
-
-            }
+        // Gender selection
+        male.setOnClickListener(view -> {
+            male.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.blue_border_frame));
+            female.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.border_edit_text));
+            typeOfUser = "Male";
         });
 
-
-        female.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                female.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.pink_border_frame));
-                male.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.border_edit_text));
-                tyeofuser="Female";
-
-            }
+        female.setOnClickListener(view -> {
+            female.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.pink_border_frame));
+            male.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.border_edit_text));
+            typeOfUser = "Female";
         });
 
-        calulateBmi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(tyeofuser.equals("0")){
-                    Toast.makeText(BmiCalculator.this, "Select Your Gender First", Toast.LENGTH_SHORT).show();
-                }else if(intprogress.equals("0")) {
-                    Toast.makeText(BmiCalculator.this, "Select Your Height First", Toast.LENGTH_SHORT).show();
-                } else if (intage==0 || intage<0) {
-                    Toast.makeText(BmiCalculator.this, "Age is Invalid", Toast.LENGTH_SHORT).show();
-                    
-                } else if (intweight==0 || intweight<0) {
-                    Toast.makeText(BmiCalculator.this, "Weight is Invalid", Toast.LENGTH_SHORT).show();
-
-                }else {
-                    Intent i= new Intent(BmiCalculator.this, BmiResult.class);
-
-                    i.putExtra("gender",tyeofuser);
-                    i.putExtra("height",intprogress);
-                    i.putExtra("weight",weight2);
-                    i.putExtra("age",age2);
-                    startActivity(i);
-                }
-
+        // Calculate BMI button action
+        calculateBmi.setOnClickListener(view -> {
+            if (typeOfUser.equals("0")) {
+                Toast.makeText(BmiCalculator.this, "Select Your Gender First", Toast.LENGTH_SHORT).show();
+            } else if (intProgress.equals("0")) {
+                Toast.makeText(BmiCalculator.this, "Select Your Height First", Toast.LENGTH_SHORT).show();
+            } else if (intAge <= 0) {
+                Toast.makeText(BmiCalculator.this, "Age is Invalid", Toast.LENGTH_SHORT).show();
+            } else if (intWeight <= 0) {
+                Toast.makeText(BmiCalculator.this, "Weight is Invalid", Toast.LENGTH_SHORT).show();
+            } else {
+                Intent i = new Intent(BmiCalculator.this, BmiResult.class);
+                i.putExtra("gender", typeOfUser);
+                i.putExtra("height", intProgress);
+                i.putExtra("weight", weight2);
+                i.putExtra("age", age2);
+                startActivity(i);
             }
         });
-
-
-
-
     }
 }

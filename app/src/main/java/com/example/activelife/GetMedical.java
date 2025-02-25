@@ -1,6 +1,7 @@
 package com.example.activelife;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,18 +20,6 @@ public class GetMedical extends AppCompatActivity {
         setTheme(R.style.Base_Theme_ActiveLife);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_medical);
-
-        //values from the previous activity
-        String email=getIntent().getStringExtra("email");
-        String password=getIntent().getStringExtra("password");
-        String name = getIntent().getStringExtra("name");
-        String city = getIntent().getStringExtra("city");
-        String gender= getIntent().getStringExtra("gender");
-        String age=getIntent().getStringExtra("age");
-        String activity_level=getIntent().getStringExtra("activity_level");
-        String height=getIntent().getStringExtra("height");
-        String weight=getIntent().getStringExtra("weight");
-        String targetweight=getIntent().getStringExtra("targetweight");
 
         Button next = findViewById(R.id.next);
         Button back = findViewById(R.id.back);
@@ -75,7 +64,8 @@ public class GetMedical extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(GetMedical.this, GetTargetWeight.class);
                 startActivity(i);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                overridePendingTransition(0, 0);
             }
         });
 
@@ -91,24 +81,17 @@ public class GetMedical extends AppCompatActivity {
                 } else if (medicalConditionGroup.getCheckedRadioButtonId() == R.id.noRadioButton) {
                     selectedConditions.append("None");
 
+                    SharedPreferences sharedPreferences = getSharedPreferences("ActiveLifeLogin", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("Medical_Condition",selectedConditions.toString());
+                    editor.apply();
+
                     // Create Intent for the next activity
                     Intent i = new Intent(GetMedical.this, GetStarted.class);
-
-                    i.putExtra("email",email);
-                    i.putExtra("password",password);
-                    i.putExtra("name",name);
-                    i.putExtra("city", city);
-                    i.putExtra("gender", gender);
-                    i.putExtra("age", age);
-                    i.putExtra("activity_level", activity_level);
-                    i.putExtra("height", height);
-                    i.putExtra("weight",weight);
-                    i.putExtra("targetweight", targetweight);
-
-                    // Pass the medical conditions as an extra
-                    i.putExtra("medical_conditions", selectedConditions.toString());
                     startActivity(i);
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+                    //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    overridePendingTransition(0, 0);
 
                 } else if (medicalConditionGroup.getCheckedRadioButtonId() == R.id.yesRadioButton) {
                     // Check if at least one checkbox is selected
@@ -173,26 +156,18 @@ public class GetMedical extends AppCompatActivity {
                             selectedConditions.setLength(selectedConditions.length() - 2);
                         }
 
+                        SharedPreferences sharedPreferences = getSharedPreferences("ActiveLifeLogin", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("Medical_Conditions",selectedConditions.toString());
+                        editor.apply();
+
                         // Create Intent for the next activity
                         Intent i = new Intent(GetMedical.this, GetStarted.class);
-
-                        i.putExtra("email",email);
-                        i.putExtra("password",password);
-                        i.putExtra("name",name);
-                        i.putExtra("city", city);
-                        i.putExtra("gender", gender);
-                        i.putExtra("age", age);
-                        i.putExtra("activity_level", activity_level);
-                        i.putExtra("height", height);
-                        i.putExtra("weight",weight);
-                        i.putExtra("targetweight", targetweight);
-
-                        // Pass the medical conditions as an extra
-                        i.putExtra("medical_conditions", selectedConditions.toString());
                         startActivity(i);
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     }
                 } else {
+
                     // If no medical conditions are applicable
                     Intent i = new Intent(GetMedical.this, GetStarted.class);
                     startActivity(i);

@@ -8,17 +8,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ContactTrainer">
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
         android:layout_weight="1">
 
+        <ImageButton
+            android:id="@+id/bb1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/back"
+            android:contentDescription="Back"
+            android:layout_marginLeft="10dp"
+            android:paddingTop="15dp"
+            android:padding="8dp"
+            android:layout_gravity="start" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/male_coach"
-            android:layout_marginTop="30dp"
             android:layout_gravity="center_horizontal"/>
 
         <TextView

@@ -1,8 +1,10 @@
 package com.example.activelife;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.EditText;
 import android.widget.Button;
@@ -26,6 +28,16 @@ public class ChangeStepTarget extends AppCompatActivity {
 
         stepTargetEditText = findViewById(R.id.stepTargetEditText);
         saveButton = findViewById(R.id.saveButton);
+
+
+        ImageButton back=(ImageButton) findViewById(R.id.bb1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ChangeStepTarget.this, Profile.class);
+                startActivity(i);
+            }
+        });
 
         // Load current target from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("ActiveLifeLogin", MODE_PRIVATE);

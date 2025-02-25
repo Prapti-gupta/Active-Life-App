@@ -10,13 +10,24 @@
     android:layout_height="match_parent"
     tools:context=".Achievements">
 
+    <ImageButton
+        android:id="@+id/bb1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/white_backarrow"
+        android:contentDescription="Back"
+        android:layout_marginLeft="10dp"
+        android:paddingTop="15dp"
+        android:padding="8dp"
+        android:layout_gravity="start" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your Badges"
         android:layout_gravity="center"
         android:textSize="30dp"
-        android:layout_marginTop="20dp"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:layout_marginBottom="20dp"/>
@@ -37,14 +48,15 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/loading"
+                android:src="@android:color/transparent"
                 android:layout_margin="5dp"/>
 
             <TextView
+                android:id="@+id/bt1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Rising Star 🌟"
+                android:text=""
                 android:textSize="18dp"
                 android:textColor="@color/white"
                 android:layout_marginTop="10dp"/>
@@ -61,14 +73,15 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/loading"
+                android:src=" @android:color/transparent"
                 android:layout_margin="5dp"/>
 
             <TextView
+                android:id="@+id/bt2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Consistency 🏅"
+                android:text=""
                 android:textSize="18dp"
                 android:textColor="@color/white"
                 android:layout_marginTop="10dp"/>
@@ -93,15 +106,15 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/loading"
+                android:src="@android:color/transparent"
                 android:layout_margin="5dp"/>
 
             <TextView
-
+                android:id="@+id/bt3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Sweat Warrior 🏋️‍♂️"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="18dp"
                 android:layout_marginTop="10dp"/>
@@ -118,14 +131,15 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/loading"
+                android:src=" @android:color/transparent"
                 android:layout_margin="5dp"/>
 
             <TextView
+                android:id="@+id/bt4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Peak Performer ⛰️"
+                android:text=" "
                 android:textColor="@color/white"
                 android:textSize="18dp"
                 android:layout_marginTop="10dp"/>
@@ -150,14 +164,15 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/loading"
+                android:src=" @android:color/transparent"
                 android:layout_margin="5dp"/>
 
             <TextView
+                android:id="@+id/bt5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Fit Legend 🏆"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="18dp"
                 android:layout_marginTop="10dp"/>
@@ -174,14 +189,15 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/loading"
+                android:src="@android:color/transparent"
                 android:layout_margin="5dp"/>
 
             <TextView
+                android:id="@+id/bt6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Health Hero 🦸‍"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="18dp"
                 android:layout_marginTop="10dp"/>

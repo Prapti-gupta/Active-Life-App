@@ -5,7 +5,18 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".BmiCalculator">
+
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/back"
+        android:contentDescription="Back"
+        android:padding="8dp"
+        android:layout_gravity="start" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -14,7 +25,7 @@
         android:textSize="28sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="30dp"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,7 +46,7 @@
         android:layout_above="@id/heightlayout"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="20dp"
         android:layout_toStartOf="@id/centerverticaline"
         android:background="@drawable/border_edit_text">
 
@@ -57,7 +68,7 @@
         android:layout_above="@id/heightlayout"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="20dp"
         android:layout_toEndOf="@id/centerverticaline"
         android:background="@drawable/border_edit_text">
 
