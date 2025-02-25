@@ -1,11 +1,15 @@
 package com.example.activelife;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -14,6 +18,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class GetMedical extends AppCompatActivity {
+
+    private StringBuilder selectedConditions = new StringBuilder();
+    private boolean isOtherConditionEntered = false; // Flag to check if "Other" condition is entered
+    private String otherCondition = ""; // Store "Other" condition
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +40,23 @@ public class GetMedical extends AppCompatActivity {
         LinearLayout checkboxLayout5 = findViewById(R.id.layout5);
         LinearLayout checkboxLayout6 = findViewById(R.id.layout6);
         View mainline = findViewById(R.id.mainline);
+
+
+        CheckBox otherCheckbox = findViewById(R.id.other);
+
+        // Set an OnCheckedChangeListener for the "Other" checkbox
+        otherCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // Show the dialog to input the custom medical condition
+                    showOtherConditionDialog();
+                } else {
+                    isOtherConditionEntered = false; // Reset flag when "Other" checkbox is unchecked
+                    otherCondition = ""; // Reset the condition text
+                }
+            }
+        });
 
         medicalConditionGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -144,9 +169,21 @@ public class GetMedical extends AppCompatActivity {
                         isAnyCheckboxSelected = true;
                     }
                     if (((CheckBox) checkboxLayout6.findViewById(R.id.other)).isChecked()) {
-                        selectedConditions.append("Other, ");
+                        selectedConditions.append("");
                         isAnyCheckboxSelected = true;
                     }
+
+                    // If "Other" condition is entered, add it properly as "Other: <condition>"
+                    if (isOtherConditionEntered && !otherCondition.isEmpty()) {
+                        // Append "Other: <condition>" if custom condition is provided
+                        selectedConditions.append(otherCondition).append(", ");
+                    }
+
+                    // Remove the last comma and space if conditions were selected
+                    if (selectedConditions.length() > 0) {
+                        selectedConditions.setLength(selectedConditions.length() - 2); // Remove the trailing comma
+                    }
+
 
                     if (!isAnyCheckboxSelected) {
                         Toast.makeText(GetMedical.this, "Please select at least one checkbox", Toast.LENGTH_SHORT).show();
@@ -177,4 +214,46 @@ public class GetMedical extends AppCompatActivity {
         });
 
     }
+
+    private void showOtherConditionDialog() {
+        // Create the dialog for entering a custom medical condition
+        AlertDialog.Builder builder = new AlertDialog.Builder(GetMedical.this);
+        builder.setTitle("Enter Other Medical Condition");
+
+        // Create an EditText for user input
+        final EditText input = new EditText(GetMedical.this);
+        builder.setView(input);
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                otherCondition = input.getText().toString().trim();
+                if (!otherCondition.isEmpty()) {
+                    isOtherConditionEntered = true; // Set the flag when "Other" condition is entered
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("ActiveLifeLogin", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("Medical_Conditions",otherCondition);
+                    editor.apply();
+                }
+
+                // Dismiss the dialog when OK is clicked
+                dialog.dismiss();
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                // Uncheck the "Other" checkbox if the user cancels
+                CheckBox otherCheckbox = findViewById(R.id.other);
+                otherCheckbox.setChecked(false);
+            }
+        });
+
+        builder.show();
+    }
+
+
 }

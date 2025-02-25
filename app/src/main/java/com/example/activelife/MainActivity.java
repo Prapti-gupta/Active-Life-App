@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity {
     private boolean passwordVisible = false;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         EditText confPassInput = findViewById(R.id.confpass_input);
         Button signUpButton = findViewById(R.id.signup_button);
         TextView clickableText = findViewById(R.id.login);
+        CheckBox termsCheckbox = findViewById(R.id.terms_checkbox);
 
         // Toggle for password field
         passwordInput.setOnTouchListener(new View.OnTouchListener() {
@@ -86,6 +88,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, LoginPage.class);
                 startActivity(i);
+            }
+        });
+
+        // Set a listener to change the color when checked
+        termsCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                // Change the checkbox tint to green when checked
+                termsCheckbox.setButtonTintList(ContextCompat.getColorStateList(this, R.color.greentick));
+            } else {
+                // Set the tint back to the primary color (dress color)
+                termsCheckbox.setButtonTintList(ContextCompat.getColorStateList(this, R.color.darkgrey));
             }
         });
 
